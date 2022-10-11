@@ -1,0 +1,1 @@
+web: gunicorn mybfc.wsgi --log-file -

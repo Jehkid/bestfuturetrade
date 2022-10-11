@@ -1,0 +1,317 @@
+{% extends 'partials/base.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+
+
+{% include 'partials/header.html' %}
+
+<style>
+
+.profile .profile-card img {
+  max-width: 120px;
+}
+
+.profile .profile-card h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #2c384e;
+  margin: 10px 0 0 0;
+}
+
+.profile .profile-card h3 {
+  font-size: 18px;
+}
+
+.profile .profile-card .social-links a {
+  font-size: 20px;
+  display: inline-block;
+  color: rgba(1, 41, 112, 0.5);
+  line-height: 0;
+  margin-right: 10px;
+  transition: 0.3s;
+}
+
+.profile .profile-card .social-links a:hover {
+  color: #012970;
+}
+
+.profile .profile-overview .row {
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+
+.profile .profile-overview .card-title {
+  color:white;
+}
+
+.profile .profile-overview .label {
+  font-weight: 600;
+  color: white;
+}
+
+.profile .profile-edit label {
+  font-weight: 600;
+  color: white;
+}
+
+.profile .profile-edit img {
+  max-width: 120px;
+}
+
+</style>
+
+
+<section class="section profile">
+    <div class="row">
+      <div class="col-xl-4">
+
+        <div class="card">
+          <div class="card-body profile-card pt-4 d-flex flex-column align-items-center" style="background-color:black ;" >
+
+            <img src="{{user_profile.profileimg.url}}" width="150px" alt="Profile" class="rounded-circle">
+            <h2 style="text-transform:capitalize ;color: #00f7ff; ">{{user.username}}</h2>
+            <h3 style="text-transform:capitalize ;color: #00f7ff; ">Location: {{user_profile.location}}</h3>
+            <!-- <div class="social-links mt-2">
+              <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+              <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+              <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+              <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+            </div> -->
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-xl-8"   >
+
+        <div class="card" style="background-color:black ;">
+          <div class="card-body pt-3">
+            <!-- Bordered Tabs -->
+            <ul class="nav nav-tabs nav-tabs-bordered">
+
+              <li class="nav-item">
+                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Overview</button>
+              </li>
+
+              <li class="nav-item">
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Edit Profile</button>
+              </li>
+
+              <!-- <li class="nav-item">
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-settings">Settings</button>
+              </li> -->
+
+              <li class="nav-item">
+     <a href="{% url 'password_change' %}">           <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Change Password</button></a>
+              </li>
+
+            </ul>
+            <div class="tab-content pt-2">
+
+              <div class="tab-pane fade show active profile-overview" id="profile-overview">
+
+                <h5 class="card-title">Profile Details</h5>
+                 <hr>
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label ">Username:
+                   <span class="col-lg-9 col-md-8" style="text-transform:capitalize ;  color: #00f7ff;">{{user.username}}</span> </div>
+                </div>
+                
+                
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label ">Job:
+                   <span class="col-lg-9 col-md-8" style="text-transform:capitalize ;color: #00f7ff; ">{{user_profile.job}}</span> </div>
+                </div>
+                
+
+                
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label ">Location:
+                   <span class="col-lg-9 col-md-8" style="text-transform:capitalize ;color: #00f7ff; ">{{user_profile.location}}</span> </div>
+                </div>
+                 
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label ">Address:
+                   <span class="col-lg-9 col-md-8" style="text-transform:capitalize ;color: #00f7ff; ">{{user_profile.address}}</span> </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label ">Phone:
+                   <span class="col-lg-9 col-md-8" style="text-transform:capitalize ;color: #00f7ff; ">{{user_profile.mobile}}</span> </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label ">Email:
+                   <span class="col-lg-9 col-md-8" style="text-transform:capitalize ;color: #00f7ff; ">{{user.email}}</span> </div>
+                </div>
+
+                <!-- <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Date of birth</div>
+                  <div class="col-lg-9 col-md-8">{{user_profile.birth_date}}</div>
+                </div> -->
+
+               
+             
+              </div>
+
+              <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
+
+
+
+                <!-- Profile Edit Form -->
+                <form action="" method="POST" id="setting" enctype="multipart/form-data">
+                  {% csrf_token %}
+
+                  <div class="row mb-3">
+                    <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
+                    <div class="col-md-8 col-lg-9">
+                       <input type="file" name="image" value="">
+                      <img  height="100" width="100" src="{{user_profile.profileimg.url}}" alt="Profile">
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label for="fullName" class="col-md-4 col-lg-3 col-form-label" >Username</label>
+                    <div class="col-md-8 col-lg-9">
+                      <input name="fullname" type="text" readonly class="form-control" id="
+                      " required="" style="text-transform:capitalize ;color: #00f7ff; " value="{{request.user.username}}">
+                    </div>
+                  </div>
+
+                
+                  <!-- <div class="row mb-3">
+                    <label for="company" class="col-md-4 col-lg-3 col-form-label">Date of birth</label>
+                    <div class="col-md-8 col-lg-9">
+                      <input name="birth_date" type="date" class="form-control" id="company" value="{{user_profile.birth_date}}">
+                    </div>
+                  </div> -->
+
+                  <div class="row mb-3">
+                    <label for="Job" class="col-md-4 col-lg-3 col-form-label">Job</label>
+                    <div class="col-md-8 col-lg-9">
+                      <input name="job" type="text" class="form-control" id="Job"  value="{{user_profile.job}}">
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label for="Country" class="col-md-4 col-lg-3 col-form-label">Location</label>
+                    <div class="col-md-8 col-lg-9">
+                      <input name="location" type="text" class="form-control" id="Country" style="text-transform:capitalize ;color: #00f7ff; "  value="{{user_profile.location}}">
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label for="Address" class="col-md-4 col-lg-3 col-form-label">Address</label>
+                    <div class="col-md-8 col-lg-9">
+                      <input name="address" type="text" class="form-control"  id="Address" value="{{user_profile.address}}">
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Phone</label>
+                    <div class="col-md-8 col-lg-9">
+                      <input name="mobile" type="number" class="form-control"  required="" placeholder="Your Mobile Number" id="Phone" value="{{user_profile.mobile}}">
+                    </div>
+                  </div>
+
+                   <div class="row mb-3">
+                    <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
+                    <div class="col-md-8 col-lg-9">
+                      <input  type="email" class="form-control" id="Email" value="{{user.email}}">
+                    </div>
+                  </div> 
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                  </div>
+                </form>
+
+
+                  <!-- <div class="row mb-3">
+                    <label for="Twitter" class="col-md-4 col-lg-3 col-form-label">Twitter Profile</label>
+                    <div class="col-md-8 col-lg-9">
+                      <input name="twitter" type="text" class="form-control" id="Twitter" value="https://twitter.com/#">
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label for="Facebook" class="col-md-4 col-lg-3 col-form-label">Facebook Profile</label>
+                    <div class="col-md-8 col-lg-9">
+                      <input name="facebook" type="text" class="form-control" id="Facebook" value="https://facebook.com/#">
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label for="Instagram" class="col-md-4 col-lg-3 col-form-label">Instagram Profile</label>
+                    <div class="col-md-8 col-lg-9">
+                      <input name="instagram" type="text" class="form-control" id="Instagram" value="https://instagram.com/#">
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label for="Linkedin" class="col-md-4 col-lg-3 col-form-label">Linkedin Profile</label>
+                    <div class="col-md-8 col-lg-9">
+                      <input name="linkedin" type="text" class="form-control" id="Linkedin" value="https://linkedin.com/#">
+                    </div>
+                  </div> -->
+
+          
+
+              <!-- <div class="tab-pane fade pt-3" id="profile-settings"> -->
+
+                <!-- Settings Form -->
+                <!-- <form>
+
+                  <div class="row mb-3">
+                    <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Email Notifications</label>
+                    <div class="col-md-8 col-lg-9">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="changesMade" checked>
+                        <label class="form-check-label" for="changesMade">
+                          Changes made to your account
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="newProducts" checked>
+                        <label class="form-check-label" for="newProducts">
+                          Information on new products and services
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="proOffers">
+                        <label class="form-check-label" for="proOffers">
+                          Marketing and promo offers
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="securityNotify" checked disabled>
+                        <label class="form-check-label" for="securityNotify">
+                          Security alerts
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
+                  
+               </div> -->
+
+              
+            </div><!-- End Bordered Tabs -->
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main><!-- End #main -->
+
+
+{% include 'partials/footer.html' %}
+
+  {% endblock content %}
+

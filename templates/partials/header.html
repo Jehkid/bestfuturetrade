@@ -1,0 +1,84 @@
+{% load static %}
+
+<header id="header" class="fixed-top" >
+  <div class="container d-flex align-items-center justify-content-between">
+    
+
+    <style>
+#header .logo {
+  font-size: 28px;
+  margin:0;
+  padding: 0;
+  line-height: 1;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  font-family: "Poppins", sans-serif;
+}
+#header .logo a {
+  color: #16507b;
+}
+#header .logo img {
+  max-height: 55px;
+ width: 300px;
+  
+}
+@media (max-width: 992px) {
+  #header .logo {
+    font-size: 28px;
+  }
+}
+
+
+    </style>
+    
+
+    <h1 class="logo"><a href="/" style="text-decoration: none;" > </a></h1>
+    <!-- Uncomment below if you prefer to use an image logo -->
+    <a href="/" class="logo"><img src="{% static 'assets/log3.png' %}" alt="" class="img-fluid"></a> 
+    <div class="col-md-3 hidden-sm col-xs-12" style="height:fit-content ;margin: 2px;">
+      <!-- right header section -->
+                  
+      <div class="search_bar" >
+        <div id="google_translate_element"></div>
+       <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+       
+       <script type="text/javascript">
+        function googleTranslateElementInit() {
+          new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+        }
+        </script>
+        
+      </div>
+    </div>
+
+
+    <nav id="navbar" class="navbar"  >
+      <ul>
+        <li><a class="nav-link scrollto active" href="/">Home</a></li>
+        <li><a class="nav-link scrollto" href="/#about">About</a></li>
+        <li><a class="nav-link scrollto" href="/#services">Services</a></li>
+        <!-- <li><a class="nav-link scrollto o" href="#portfolio">Portfolio</a></li> -->
+        <!-- <li><a class="nav-link scrollto" href="#team">Team</a></li> -->
+        {% if user.is_authenticated %}
+        <li><a class="nav-link scrollto" href="dash">Dashboard</a></li>
+        {% else %}
+        <li><a class="nav-link scrollto" href="policy">Our Policy</a></li>
+        {% endif %}
+         
+        <li><a class="nav-link scrollto" href="plan">Packages</a></li>
+        <li><a class="nav-link scrollto" href="contact">Contact</a></li>
+        {% if user.is_authenticated %}
+        <li><a class="getstarted scrollto" href="logout">Logout</a></li>
+        {% else %}
+        <li><a class="getstarted scrollto" href="login">Login/Signup</a></li>
+        {% endif %}
+      </ul>
+      <i class="bi bi-list mobile-nav-toggle"></i>
+    </nav><!-- .navbar -->
+   
+      </div>
+
+</header>
+
+
+

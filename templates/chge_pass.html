@@ -1,0 +1,39 @@
+{% extends 'partials/base.html' %}
+
+{% block content %}
+
+<center style="margin-top:100px ;"> 
+<h3 style="padding:20px ;">Change Password</h3>
+
+    <div style="padding:20px ;">    <!-- Change Password Form -->
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {% for error in form.non_field_errors %}
+                    <div class="alert alert-danger">
+                      {{error}}
+                    </div>
+                    {% endfor %}
+                    
+                    {% for field in form %}
+                    <div class="form-group">
+                      {{ field.label }}
+
+                      {{field}}
+                    </div>
+                    
+                    {% if field.errors %}
+                    <div class="alert alert-danger">
+                      {{field.errors}}
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                    <br>
+                    <button type="submit" class="btn btn-primary">Change Password</button>
+                </form><!-- End Change Password Form -->
+            </div>
+
+            </center>
+
+            {% endblock content %}
+
+

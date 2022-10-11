@@ -1,0 +1,111 @@
+{% extends 'partials/ext-base.html' %}
+{% load static %}
+{% load humanize %}
+
+
+
+
+{% block title1 %} Litecoin {% endblock title1 %}
+
+
+
+
+{% block content1 %}
+
+
+
+
+<aside class="right-side" style="background-color: #000000; padding:10px ; " >
+
+    <!-- Main content -->
+       <section class="content" style="background-color: #000000;" >
+
+        
+        <!-- Main row -->
+
+        <div class="row">
+
+      
+
+          <div class="col-lg-12">
+        <section class="panel" style="background-color: #101113; color:#fff;">
+                     <header class="panel-heading" style="background-color:#101113; color:#fff; font-weight:bold; border-bottom:#101113;">
+                      Make Deposit
+                  </header>
+                        <div class="panel-body">
+                      
+
+                                   <div class="row">
+                    <div class="col-md-12">
+                        <div class="refferal-statistics-item">
+                            <h6>Make Payment of <span class="text-info">${{depo1.amt1|intcomma}} {{depo1.coin1}}</span></h6>
+                        </div>
+                    </div><!-- .col -->
+                   <!-- .col -->
+                   <!-- .col -->
+                </div><!-- .row -->
+           
+<div class="row">
+                <!-- .col -->
+                <div class="col-sm-12">
+                   
+                  
+                    <label>Copy Address</label>
+                      <div class="refferal-info">
+                      
+                      
+                <span class="refferal-copy-feedback copy-feedback"></span>
+                <em class="fa fa-link"></em>
+                <input type="text" class="form-control" value="ltc1qgjsdt8gkduf2chyflfnce069v4n36wul3mrk5f" id="address" readonly>
+               
+            </div>
+            
+            
+           
+                
+                    <div class="tranx-info-qr">
+                        <span>Carefully copy the wallet address below OR Scan the QR Code below.</span>
+                        <img class="tranx-info-qrimg" width="200" height="200" src="{% static 'dashform\img\wallet\Litecoin .jpg' %}" alt="">
+                        <div class="gaps-4x"></div>
+               
+                    </div>
+                    
+                      <div class="gaps-1x"></div>
+              
+             <div class="note note-info">
+                        <em class="fa fa-info-circle"></em>
+                        <p>Send proof of payment to our email:  bestfuturetrade@gmail..com with your deposit details and amount.</p>
+                    </div>
+                     <div class="note note-info">
+                        <em class="fa fa-info-circle"></em>
+                        <p>Payments are automatically processed. If you encountered delays before confirmation of deposit, please always contact our support. </p>
+                    </div>
+                </div><!-- .col -->
+            </div><!-- .row -->
+               
+                            
+                           
+                                
+                       </div>
+                   </section>
+          </div><!--end col-6 -->
+ 
+    
+            
+    
+    
+    
+    
+
+        </div>
+
+  <!-- row end -->
+    </section><!-- /.content -->
+<div class="footer-main" style=" margin-top :20px; background-color:#101113; color:#fff; border-top:#101113;">
+        Copyright &copy Bestfuturetrade, 2022                </div>
+</aside><!-- /.right-side -->
+
+</div><!-- ./wrapper -->
+
+{% endblock content1 %}
+

@@ -1,0 +1,207 @@
+<p style="font-size:15px ;">Hi <span style="color:#0000ff ; text-transform: capitalize;"> {{user}}</span></p>
+
+<span style="font-size:15px ;">  Deposit Request of ${{amt}} of ({{coin}}) was intiated by you</span> 
+ <br><br>
+ {% for res in rec %}
+<span style="font-size:14px ;"> Make a payment of ${{amt}} to this {{coin}} wallet below:  </span><br>
+<input type="text" width="300px" readonly value="{{res.btc_ad}}" >
+<div >
+<img style="border:5px ;width:150px;" src="{{res.btc_bar}}" />
+
+</div>
+{% endfor %}
+    
+<p style="font-size:14px ;">You can confirm this withdrawal by logging into your dashboard. If you need more information, contact our customer support: support@bestfuturetrade.com or info@bestfuturetrade.com
+    Enjoy the best trade with BFT Ltd
+    Support Team
+    Bestfuturetrade Ltd.
+    E-mails from Bestfuturtradelimited are confidential, kindly treat as one. </p>
+</div>
+
+
+
+
+
+
+
+investment
+
+
+
+elif plans.plans=='starter_plan' and plans.amt1 > 5099:
+messages.info(request,f'{plans.amt1} is greater than starter plan ')
+
+elif plans.plans=='bronze_plan' and (plans.amt1 >=5100 and plans.amt1 <=10099):
+messages.success(request,f'{plans.amt1} invested, Activated {plans.plans} ')
+plans.user=request.user
+plans.save()
+template=loader.get_template('invest_info1.text')
+
+var={
+ 'user':request.user,
+ 'amt':plans.amt1,
+ 'plans':plans.plans
+         } 
+message = template.render(var)  
+email =EmailMultiAlternatives(
+'Investment Notice', message, 'Bestfuturetrade',
+[request.user.email]
+)
+email.content_subtype='html'
+email.mixed_subtype='related'   
+email.send()
+
+
+elif  plans.plans=='bronze_plan' and (plans.amt1 < 5100 or plans.amt1 > 10099):
+ messages.info(request,f'{plans.amt1} is not bronze plan ') 
+
+elif plans.plans=='silver_plan' and (plans.amt1 >=10100 and plans.amt1 <=20099):
+messages.success(request,f'{plans.amt1} invested, Activated {plans.plans} ')
+plans.user=request.user
+plans.save()
+template=loader.get_template('invest_info1.text')
+
+var={
+ 'user':request.user,
+ 'amt':plans.amt1,
+ 'plans':plans.plans
+         } 
+message = template.render(var)  
+email =EmailMultiAlternatives(
+'Investment Notice', message, 'Bestfuturetrade',
+[request.user.email]
+)
+email.content_subtype='html'
+email.mixed_subtype='related'   
+email.send()
+
+
+elif  plans.plans=='silver_plan' and (plans.amt1 < 10100 or plans.amt1 > 20099):
+ messages.info(request,f'{plans.amt1} is not silver plan ')
+ 
+elif plans.plans=='golden_plan' and (plans.amt1 >=20100 and plans.amt1 <=30099):
+messages.success(request,f'{plans.amt1} invested, Activated {plans.plans} ')
+plans.user=request.user
+plans.save()
+template=loader.get_template('invest_info1.text')
+
+var={
+ 'user':request.user,
+ 'amt':plans.amt1,
+ 'plans':plans.plans
+         } 
+message = template.render(var)  
+email =EmailMultiAlternatives(
+'Investment Notice', message, 'Bestfuturetrade',
+[request.user.email]
+)
+email.content_subtype='html'
+email.mixed_subtype='related'   
+email.send()
+
+
+elif  plans.plans=='golden_plan' and (plans.amt1 < 20100 or plans.amt1 > 30099):
+ messages.info(request,f'{plans.amt1} is not golden plan ')
+
+elif plans.plans=='starter_mining' and (plans.amt1 >=30100 and plans.amt1 <=40099):
+messages.success(request,f'{plans.amt1} invested, Activated {plans.plans} ')
+plans.user=request.user
+plans.save()
+template=loader.get_template('invest_info1.text')
+
+var={
+ 'user':request.user,
+ 'amt':plans.amt1,
+ 'plans':plans.plans
+         } 
+message = template.render(var)  
+email =EmailMultiAlternatives(
+'Investment Notice', message, 'Bestfuturetrade',
+[request.user.email]
+)
+email.content_subtype='html'
+email.mixed_subtype='related'   
+email.send()
+
+
+elif  plans.plans=='starter_mining' and (plans.amt1 < 30100 or plans.amt1 > 40099):
+ messages.info(request,f'{plans.amt1} is not starter mining ')
+
+elif plans.plans=='bronze_mining' and (plans.amt1 >=40100 and plans.amt1 <=50099):
+messages.success(request,f'{plans.amt1} invested, Activated {plans.plans} ')
+plans.user=request.user
+plans.save()
+template=loader.get_template('invest_info1.text')
+
+var={
+ 'user':request.user,
+ 'amt':plans.amt1,
+ 'plans':plans.plans
+         } 
+message = template.render(var)  
+email =EmailMultiAlternatives(
+'Investment Notice', message, 'Bestfuturetrade',
+[request.user.email]
+)
+email.content_subtype='html'
+email.mixed_subtype='related'   
+email.send()
+
+
+elif  plans.plans=='bronze_mining' and (plans.amt1 < 40100 or plans.amt1 > 50099):
+ messages.info(request,f'{plans.amt1} is not bronze mining ')
+
+elif plans.plans=='silver_mining' and (plans.amt1 >=50100 and plans.amt1 <=60099):
+messages.success(request,f'{plans.amt1} invested, Activated {plans.plans} ')
+plans.user=request.user
+plans.save()
+template=loader.get_template('invest_info1.text')
+
+var={
+ 'user':request.user,
+ 'amt':plans.amt1,
+ 'plans':plans.plans
+         } 
+message = template.render(var)  
+email =EmailMultiAlternatives(
+'Investment Notice', message, 'Bestfuturetrade',
+[request.user.email]
+)
+email.content_subtype='html'
+email.mixed_subtype='related'   
+email.send()
+
+
+elif  plans.plans=='silver_mining' and (plans.amt1 < 50100 or plans.amt1 > 60099):
+ messages.info(request,f'{plans.amt1} is not silver mining ')
+
+elif plans.plans=='gold_mining' and plans.amt1 >=60100:
+messages.success(request,f'{plans.amt1} invested, Activated {plans.plans} ')
+plans.user=request.user
+plans.save()
+template=loader.get_template('invest_info1.text')
+
+var={
+ 'user':request.user,
+ 'amt':plans.amt1,
+ 'plans':plans.plans
+         } 
+message = template.render(var)  
+email =EmailMultiAlternatives(
+'Investment Notice', message, 'Bestfuturetrade',
+[request.user.email]
+)
+email.content_subtype='html'
+email.mixed_subtype='related'   
+email.send()
+
+
+elif  plans.plans=='gold_mining' and plans.amt1 < 60099:
+ messages.info(request,f'{plans.amt1} is not gold mining ')
+
+  
+ balance= payment1.objects.filter(user=request.user,bol='True').aggregate(t= Coalesce( Sum('amt1'),Value(0) )).get('t')
+ inv_balance= investment.objects.filter(user=request.user).aggregate(r= Coalesce( Sum('amt1'),Value(0) )).get('r')
+ wtd_balance= withdraw.objects.filter(user=request.user).aggregate(u= Coalesce( Sum('amt'),Value(0) )).get('u')
+ acc= balance - inv_balance
+ acc_balance = acc - wtd_balance

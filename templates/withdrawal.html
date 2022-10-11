@@ -1,0 +1,111 @@
+{% extends 'partials/ext-base.html' %}
+{%load humanize %}
+
+
+
+{% block title1 %} Withdraw {% endblock title1 %}
+
+
+
+
+{% block content1 %}
+
+
+
+                         <aside class="right-side" style="background-color: #000000;">
+
+                            <!-- Main content -->
+                              <section class="content" style="background-color: #000000;" >   
+            
+                                
+                                <!-- Main row -->
+            
+                                <div class="row">
+            
+                              
+            
+                                  <div class="col-lg-12">
+                                      <section class="panel" style="color:#fff; background-color: #101113; border-bottom:#101113; padding:15px;">
+                                         <header class="panel-heading" style="color:#fff; background-color: #101113; border-bottom:#101113;"  >
+                                             INITIATE WITHDRWAL
+                                          </header>
+                                                <div class="panel-body">
+                                
+                          {% for message in messages %}
+                          {% if 'success' in message.tags %}
+                          <h5 style="color: #0fff07;text-align: center; font-style: italic;">{{message}}</h5>
+                          {% elif 'info' in message.tags %}
+                          <h5 style="color: #e20808;text-align: center;font-style: italic;">{{message}}</h5>
+                          {% endif %}
+                        
+                      {% endfor %}
+                        
+                                  
+                                             
+                                  
+                        <div><label> Withdraw your earning to your crypto wallet</label></div>
+                        <form action="" method="post" class="">
+                          {% csrf_token %}
+            <p class="text-warning"> AVAILABLE BALANCE:  ${{acc_balance|floatformat:2|intcomma}} </p><hr>
+            {% for was in wad reversed %}
+            {% if forloop.first %}
+           
+                <label class="text-info">Withdraw fund with your {{was.coin}} wallet address:</label>
+                <br><br>
+                            <div class="form-group">  
+                                <p><label>
+                                    <input type="radio" name="wallet" value="{{was.coin}}-[{{ was.wallet_ad }}]" required>  {{was.coin}}</label> <small>{{was.wallet_ad}} </small> </p> 
+                                    {% endif %}
+                                    {% endfor %}
+                                                     
+                        </div>
+                         <label><a href="walleth">Click here to update your wallet</a></label>
+                        
+                        
+                            </div>
+                        
+                            <div class="position-relative form-group">
+                            <label>Enter withdrawal amount</label>
+                            <div class="input-group">
+                                <input type="number"  class="form-control" name="amount" placeholder="amount" required="required"  >
+                            </div>
+                            
+                            </div>
+                    
+                            
+                          </div>
+                          
+                          
+                           <div class="box-footer" style="margin: 20px;">
+                            <button type="submit" class="btn btn-primary" name="agreement">SUBMIT</button><br><br>
+                            
+                          </div>
+            </form>				
+                        </div>		
+                        
+                                                    
+                                                   
+                                                        
+                                               </div>
+                                           </section>
+                                  </div><!--end col-6 -->
+                         
+                            
+                                    
+                            
+                            
+                            
+                            
+                    
+                                </div>
+            
+                          <!-- row end -->
+                            </section><!-- /.content -->
+                           <div class="footer-main" style=" margin-top :20px; background-color:#101113; color:#fff; border-top:#101113;">
+                                Copyright &copy Bestfuturetrade , 2022                </div>
+                        </aside><!-- /.right-side -->
+            
+                    </div><!-- ./wrapper -->
+            
+            
+                    {% endblock content1 %}
