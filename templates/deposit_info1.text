@@ -15,7 +15,7 @@
     
         <p style="font-size:15px ;">Hi <span style="color:#0000ff ; text-transform: capitalize;"> {{user}}</span></p>
 
-        <span style="font-size:15px ;">  Deposit Request of ${{amt|intcomma}} of ({{coin}}) was intiated by you</span> 
+        <span style="font-size:15px ;">  Deposit Request of ${{amt|intcomma}} of ({{coin}}) was initiated by you</span> 
          <br><br>
         <span style="font-size:14px ;"> To fund your BFT account make a payment of ${{amt|intcomma}} to this {{coin}} wallet address or Scan the QR code  below:  </span><br>
          <h3>Copy wallet address:</h3>
